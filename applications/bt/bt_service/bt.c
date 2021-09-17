@@ -1,5 +1,4 @@
 #include "bt_i.h"
-#include "battery_service.h"
 
 #define BT_SERVICE_TAG "BT"
 
@@ -56,15 +55,15 @@ int32_t bt_srv() {
         FURI_LOG_E(BT_SERVICE_TAG, "Core2 startup failed");
     } else {
         view_port_enabled_set(bt->statusbar_view_port, true);
-        if(furi_hal_bt_init_app()) {
-            FURI_LOG_I(BT_SERVICE_TAG, "BLE stack started");
-            if(bt->bt_settings.enabled) {
-                furi_hal_bt_start_advertising();
-                FURI_LOG_I(BT_SERVICE_TAG, "Start advertising");
-            }
-        } else {
-            FURI_LOG_E(BT_SERVICE_TAG, "BT App start failed");
-        }
+        // if(furi_hal_bt_init_app()) {
+        //     FURI_LOG_I(BT_SERVICE_TAG, "BLE stack started");
+        //     if(bt->bt_settings.enabled) {
+        //         furi_hal_bt_start_advertising();
+        //         FURI_LOG_I(BT_SERVICE_TAG, "Start advertising");
+        //     }
+        // } else {
+        //     FURI_LOG_E(BT_SERVICE_TAG, "BT App start failed");
+        // }
     }
     // Update statusbar
     view_port_enabled_set(bt->statusbar_view_port, furi_hal_bt_is_active());
@@ -78,7 +77,7 @@ int32_t bt_srv() {
         } else if(message.type == BtMessageTypeUpdateBatteryLevel) {
             // Update battery level
             if(furi_hal_bt_is_active()) {
-                battery_svc_update_level(message.data.battery_level);
+                // battery_svc_update_level(message.data.battery_level);
             }
         } else if(message.type == BtMessageTypePinCodeShow) {
             // Display PIN code

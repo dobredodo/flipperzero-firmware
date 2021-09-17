@@ -4,7 +4,7 @@
 #include <stm32wbxx.h>
 #include <shci.h>
 #include <cmsis_os2.h>
-#include <gap.h>
+// #include <gap.h>
 
 void furi_hal_bt_init() {
     // Explicitly tell that we are in charge of CLK48 domain
@@ -13,15 +13,15 @@ void furi_hal_bt_init() {
     APPE_Init();
 }
 
-bool furi_hal_bt_init_app() {
-    return gap_init();
-}
+// bool furi_hal_bt_init_app() {
+//     return gap_init();
+// }
 
-void furi_hal_bt_start_advertising() {
-    if(gap_get_state() == GapStateIdle) {
-        gap_start_advertising();
-    }
-}
+// void furi_hal_bt_start_advertising() {
+//     if(gap_get_state() == GapStateIdle) {
+//         gap_start_advertising();
+//     }
+// }
 
 void furi_hal_bt_stop_advertising() {
     if(furi_hal_bt_is_active()) {

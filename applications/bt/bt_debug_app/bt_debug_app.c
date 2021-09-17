@@ -94,14 +94,14 @@ void bt_debug_app_free(BtDebugApp* app) {
 int32_t bt_debug_app(void* p) {
     BtDebugApp* app = bt_debug_app_alloc();
     // Stop advertising
-    furi_hal_bt_stop_advertising();
+    // furi_hal_bt_stop_advertising();
 
     view_dispatcher_run(app->view_dispatcher);
 
     // Restart advertising
-    if(app->settings.enabled) {
-        furi_hal_bt_start_advertising();
-    }
+    // if(app->settings.enabled) {
+    //     furi_hal_bt_start_advertising();
+    // }
     bt_debug_app_free(app);
     return 0;
 }

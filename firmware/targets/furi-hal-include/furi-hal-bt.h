@@ -11,13 +11,13 @@ extern "C" {
 void furi_hal_bt_init();
 
 /** Start BLE app */
-bool furi_hal_bt_init_app();
+// bool furi_hal_bt_init_app();
 
 /** Start advertising */
-void furi_hal_bt_start_advertising();
+// void furi_hal_bt_start_advertising();
 
 /** Stop advertising */
-void furi_hal_bt_stop_advertising();
+// void furi_hal_bt_stop_advertising();
 
 /** Returns true if BLE is advertising */
 bool furi_hal_bt_is_active();
