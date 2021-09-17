@@ -1,5 +1,6 @@
 #include "../bt_settings_app.h"
 #include "furi-hal-bt.h"
+#include "app_ble.h"
 
 enum BtSetting {
     BtSettingOff,
@@ -48,11 +49,11 @@ bool bt_settings_scene_start_on_event(void* context, SceneManagerEvent event) {
 
     if(event.type == SceneManagerEventTypeCustom) {
         if(event.event == BtSettingOn) {
-            furi_hal_bt_start_advertising();
+            APP_BLE_Start();
             app->settings.enabled = true;
         } else if(event.event == BtSettingOff) {
             app->settings.enabled = false;
-            furi_hal_bt_stop_advertising();
+            // furi_hal_bt_stop_advertising();
         }
         consumed = true;
     }

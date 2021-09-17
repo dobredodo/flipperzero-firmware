@@ -4,7 +4,7 @@
 #include <stm32wbxx.h>
 #include <shci.h>
 #include <cmsis_os2.h>
-#include <gap.h>
+// #include <gap.h>
 
 void furi_hal_bt_init() {
     // Explicitly tell that we are in charge of CLK48 domain
@@ -13,21 +13,21 @@ void furi_hal_bt_init() {
     APPE_Init();
 }
 
-bool furi_hal_bt_init_app() {
-    return gap_init();
-}
+// bool furi_hal_bt_init_app() {
+//     return gap_init();
+// }
 
-void furi_hal_bt_start_advertising() {
-    if(gap_get_state() == GapStateIdle) {
-        gap_start_advertising();
-    }
-}
+// void furi_hal_bt_start_advertising() {
+//     if(gap_get_state() == GapStateIdle) {
+//         gap_start_advertising();
+//     }
+// }
 
-void furi_hal_bt_stop_advertising() {
-    if(furi_hal_bt_is_active()) {
-        gap_stop_advertising();
-    }
-}
+// void furi_hal_bt_stop_advertising() {
+//     if(furi_hal_bt_is_active()) {
+//         gap_stop_advertising();
+//     }
+// }
 
 void furi_hal_bt_dump_state(string_t buffer) {
     BleGlueStatus status = APPE_Status();
@@ -57,7 +57,8 @@ bool furi_hal_bt_is_alive() {
 }
 
 bool furi_hal_bt_is_active() {
-    return gap_get_state() > GapStateIdle;
+    BleGlueStatus status = APPE_Status();
+    return (status == BleGlueStatusBroken) || (status == BleGlueStatusStarted);
 }
 
 bool furi_hal_bt_wait_startup() {
