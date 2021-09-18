@@ -90,7 +90,7 @@ void furi_hal_clock_init() {
     LL_RCC_SetUSBClockSource(LL_RCC_USB_CLKSOURCE_PLLSAI1);
     LL_RCC_SetCLK48ClockSource(LL_RCC_CLK48_CLKSOURCE_PLLSAI1);
     LL_RCC_SetSMPSClockSource(LL_RCC_SMPS_CLKSOURCE_HSE);
-    LL_RCC_SetSMPSPrescaler(LL_RCC_SMPS_DIV_1);
+    LL_RCC_SetSMPSPrescaler(LL_RCC_SMPS_DIV_0);
     LL_RCC_SetRFWKPClockSource(LL_RCC_RFWKP_CLKSOURCE_LSE);
 
     // AHB1

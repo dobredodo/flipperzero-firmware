@@ -69,10 +69,7 @@ void HAL_RCC_CSSCallback(void) {
 
 void furi_hal_power_init() {
     LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
-    // LL_PWR_SMPS_SetMode(LL_PWR_SMPS_STEP_DOWN);
-
-    LL_PWR_SMPS_SetMode(LL_PWR_SMPS_BYPASS);
-
+    LL_PWR_SMPS_SetMode(LL_PWR_SMPS_STEP_DOWN);
     bq27220_init(&cedv);
     bq25896_init();
     FURI_LOG_I("FuriHalPower", "Init OK");
